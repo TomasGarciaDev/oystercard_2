@@ -21,5 +21,15 @@ describe Journey do
     journey = Journey.new
     expect(journey.exit_station).to eq nil
   end
+
+  it 'should know when a journey is finish' do
+    expect(subject.finish).to be_an_instance_of(Hash)
+  end
+
+  it 'should return the in and out of a Journey in a hash' do
+    journey = Journey.new("Oval")
+    @exit_station = "Bow"
+    expect(journey.finish).to eq({:a=>"Oval", :b=>"Bow"})
+  end
 end
 

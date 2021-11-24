@@ -6,5 +6,12 @@ class Journey
   def initialize(station = nil)
     @entry_station = station
     @exit_station = nil
+    @journey = {}
+  end
+
+  def finish
+    @journey[:a] = @entry_station
+    @journey[:b] = @exit_station
+    @journey
   end
 end
