@@ -1,3 +1,5 @@
+require_relative 'journey'
+
 class Oystercard
 	attr_reader :balance, :status, :entry_station, :exit_station, :travel_history
     
@@ -20,7 +22,8 @@ class Oystercard
 	def touch_in(station)
 		fail "Not enough funds: please top up" if @balance < MINIMUM_TRAVEL_AMOUNT
 		@status = true
-		@entry_station = station
+		# @entry_station = station
+		@journey = Journey.new(station)
 	end
 
 	def touch_out(exit_station)
@@ -31,10 +34,10 @@ class Oystercard
 		@entry_station = nil
 	end
 
-	def in_journey?
-		# @status 
-		entry_station == nil ? @status = false : @status = true
-	end
+	# def in_journey?
+	# 	# @status 
+	# 	entry_station == nil ? @status = false : @status = true
+	# end
 
 	private
 
