@@ -1,18 +1,31 @@
 require 'journey'
-require 'oystercard'
+# require 'oystercard'
 
 describe Journey do
-  before(:each) do
-    let(:card) { instance_double(Oystercard, top_up: 10) }
-    let(:Oval) { instance_double(Station, station_name: "oval", zone: 2) }
-    let(:Bow) { instance_double(Station, station_name: "bow", zone: 3) }
+  # before(:each) do
+  #   let(:card) { instance_double(Oystercard, top_up: 10) }
+  #   let(:Oval) { instance_double(Station, station_name: "oval", zone: 2) }
+  #   let(:Bow) { instance_double(Station, station_name: "bow", zone: 3) }
 
-    allow(:card).to receive(:touch_in).with_message(:oval)
-  end
+  #   allow(:card).to receive(:touch_in).with_message(:oval)
+  # end
   it 'has an entry station' do
-    journey = Journey.new
-    :card.touch_in(:Oval)
-    expect(journey.entry_station).to eq(:Oval)
+    git
+    # # station = double('Station')
+    # # station.should.receive(:new).with("Oval", 2).and_return()
+    # # card = Oystercard.new
+    # # card.top_up(10)
+    # # card.touch_in(station)
+    # # expect(subject.entry_station).to eq(station)
+
+    # card_instance = double('Oystercard')
+    # station_instance = double('Station')
+    # allow(station_instance).to receive(:station_name).and_return('Oval')
+    # allow(card_instance).to receive(:touch_in).with(station_instance).and_return('Oval')
+    # allow(card_instance).to receive(:top_up).and_return(10)
+    # journey = Journey.new
+    # card_instance.touch_in(station_instance)
+    # expect(journey.entry_station).to eq(station_instance)
   end
 
   xit "has an exit station" do
