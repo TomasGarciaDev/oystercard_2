@@ -13,10 +13,11 @@ describe Oystercard do
 		# card = Oystercard.new
 		expect(card.balance).to eq 0
 	end
-
+	describe '#top_up' do
 	it 'responds to the #top_up method with 1 argument' do
 		expect(subject).to respond_to(:top_up).with(1).argument
 	end
+end
 
 	it 'adds the amount to the balance of the card' do
 		# card = Oystercard.new

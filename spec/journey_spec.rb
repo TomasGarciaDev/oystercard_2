@@ -10,7 +10,6 @@ describe Journey do
   #   allow(:card).to receive(:touch_in).with_message(:oval)
   # end
   it 'has an entry station' do
-    git
     # # station = double('Station')
     # # station.should.receive(:new).with("Oval", 2).and_return()
     # # card = Oystercard.new
@@ -18,14 +17,23 @@ describe Journey do
     # # card.touch_in(station)
     # # expect(subject.entry_station).to eq(station)
 
-    # card_instance = double('Oystercard')
-    # station_instance = double('Station')
-    # allow(station_instance).to receive(:station_name).and_return('Oval')
-    # allow(card_instance).to receive(:touch_in).with(station_instance).and_return('Oval')
-    # allow(card_instance).to receive(:top_up).and_return(10)
-    # journey = Journey.new
-    # card_instance.touch_in(station_instance)
-    # expect(journey.entry_station).to eq(station_instance)
+    card_instance = double('Oystercard')
+    station_instance = double('Station', station_name: "Oval", zone: 2)
+    # allow(@station_instance).to receive(:station_name).and_return('Oval')
+    allow(card_instance).to receive(:top_up).and_return(10)
+    journey = Journey.new(station_instance)
+    allow(card_instance).to receive(:touch_in).with(station_instance).and_return(journey)
+    # card_instance.touch_in(@station_instance)
+    expect(journey.entry_station).to eq(station_instance)
+  end
+
+  it 'has an entry station eq nil' do
+
+    card_instance = double('Oystercard')
+    station_instance = double('Station', station_name: "Oval", zone: 2)
+    allow(card_instance).to receive(:top_up).and_return(10)
+    journey = Journey.new
+    expect(journey.entry_station).to be nil
   end
 
   xit "has an exit station" do
@@ -39,9 +47,5 @@ describe Journey do
     card.touch_in(:station)
     expect(card.journey.entry_station).to eq :station
   end
-
-  # it 'should store the exit station at touch_out' do
-  #   card = Oystercard.new
-  # end
 end
 
